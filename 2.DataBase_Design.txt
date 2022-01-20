@@ -1,0 +1,85 @@
+1. Phân tích và thiết kế DBMS:
+- là các thao tác được thực hiện để tìm ra một mô hình CSDL trong một tình huống nhất định
+- kết quả là một bản thiết kế CSDL
+- dựa vào bản thiết kế của CSDL, ta có thể viết ra các câu lệnh để tạo ra CSDL đó
+- bản thiết kế thường được biểu diễn dưới dạng một Lưu đồ thực thể quan hệ - ERD - Entity Relationshgip Diagram
+2. Các bước phân tích và thiết kế ERD:
+- xác định mục đích của CSDL
+- tìm hiểu và tổ chức các thông tin cần lưu trữ
+- phân chia thông tin vào các bảng
+- xác định các trường dữ liệu của từng bảng
+- xác định khóa chính của từng bảng
+- xác định mối quan hệ giữa các bảng
+- làm mịn thiết kế
+- áp dụng các quy tắc chuẩn hóa
+3. Tập hợp Dữ liệu và tổ chức các bảng:
+- tìm hiểu và tổ chức các thông tin cần lưu trữ
+- phân chia thông tin vào trong bảng
+- xác định các trường dữ liệu của từng bảng
+- xác định khóa chính của các bảng
+4. Tạo mối quan hệ giữa các bảng
+	Có 3 loại quan hệ giữa các bảng:
+- one - to - many * một nhiều
+- one - to - one * một một
+- many - to - many * nhiều nhiều
+5. Tinh chỉnh và chuẩn hóa thiết kế:
+* Chuẩn hóa:
+	- chuẩn thứ nhất * 1NF: loại bỏ các dữ liệu lặp và dư thừa
+	- chuẩn thứ hai * 2NF: tất cả các trường phải phụ thuộc hàm đầy đủ vào  khóa chính
+	- chuẩn thứ ba * 3NF: không có dữ liệu nào phụ thuộc vào các trường ko phải khóa chính
+* Quy tắc về tính toàn vẹn của Entity: khóa chính không được phép Null
+6. Constraint * Ràng buộc
+- constraint là các quy tắc* rule được quy định cho bảng
+- sử dụng constraint chúng ta có thể hạn chế những dữ liệu có thể đưa vào trong bảng
+- constraint giúp cho dữ liệu chính xác, tin cậy, toàn vẹn 
+- dữ liệu đưa vào trong bảng cần tuân thủ các constraint
+- có thể quy định constraint cho bảng hoặc cột
+==> Một số constraint thông dụng:
+NOT NULL : không cho phép giá trị Null
+UNIQUE : mỗi giá trị là duy nhất
+PRIMARY KEY : khóa chính 0 null và unique
+FOREIGN KEY : khóa ngoại - tham chiếu tới bảng khác
+CHECK : kiểm tra dựa trên điều kiện
+DEFAULT :  giá trị mặc định cho trường * nếu không được nhập vào
+INDEX : giúp tăng tốc độ truy vấn dữ liệu
+7. Thành phần cơ bản của ERD:
+- entity : thực thể
+- relationship : mối quan hệ
+- property / attributes : thuộc tính
+- entity set : tập thực thể
+- relationship set : tập mối quan hệ
+8. Chuyển đổi ERD sang mô hình dữ liệu quan hệ:
+- các entity: thực thể
+. các thuộc tính của ERD sẽ trở thành các trường của bảng
+. thuộc tính khóa chính của ERD sẽ trở thành khóa chính của bảng
+- mối quan hệ giữa các thực thể: 
+. mqh 1 - n: khóa chính của bảng 1 làm khóa ngoại của bảng n
+. mqh 1 -1 : bổ sung khóa chính của bên này làm khóa ngoại của bên kia
+. mqh n - n : 
+	B1: tạo các bảng trung gian được sinh ra từ mqh n-n chứa khóa chính của 2 bảng chuyển hóa thành khóa ngoại của bảng trung gian
+	B2: xác định khóa trung gian 
+		. nếu FK đủ điều kiện làm PK thì sẽ chọn cặp FK thành PK
+		. nếu FK không đủ điều kiện để đảm bảo tính unique và not null thì phải tạo thêm một trường mới là mã của bảng trung gian làm PK
+- thuộc tính đa trị:
+ đối với thuộc tính đa trị, chuyển đổi thành một quan hệ mới ( bảng mới ) có khóa chính bao gồm 2 thuộc tính là thuộc tính đa trị và thuộc tính khóa của thực thể đồng thời loại bỏ thuộc tính đó khỏi thực thể cũ
+
+9. 11 quy tắc quan trọng trong thiết kế CSDL:
+- xác định chiến lược cho CSDL : CSDL sử dụng để làm gì ? quản lí dữ liệu * CRUD : phân tích dữ liệu OLAP
+- chia nhỏ CSDL một cách hợp lí : nguyên tắc 1NF 
+- loại bỏ những CSDL đã chia không cần thiết
+- tránh trùng lặp dữ liệu : tập trung và tái cấu trúc dữ liệu trùng lặp
+- chú ý đến các dữ liệu có sử dụng kí tự phân chia :  nguyên tắc thứ 2 của 1NF yêu cầu dữ liệu là đơn nhất
+- chú ý tới các phụ thuộc hàm : chú ý đến các trường chỉ phụ thuộc một phần vào khóa chính
+- hạn chế các cột chứa kết quả : nếu chiến lược thiết kế là phân tích dữ liệu * OLAP thì hãy hạn chế các cột tính toán, trừ các phép tính phức tạp và ảnh hưởng đến hiệu năng
+- nếu đặt hiệu năng lên trên hết, đừng quá cứng nhắc trong việc loại bỏ dữ liệu thừa : sử dụng lệnh JOIN để khử chuẩn hóa tăng hiệu năng truy vấn
+- các dự án OLAP thường phải xử lí dữ liệu đa chiều - chúng là một con quái vật
+- thiết kế tập trung hóa tên - giá trị : tên và giá trị trong bảng mang ý nghĩa khóa và dữ liệu tương ứng của khóa
+- sử dụng PK - FK tự tham chiếu đối với trường hợp phân cấp không giới hạn
+10. Thao tác với bảng:
+- tạo bảng : CREAT TABLE table_name 
+- xóa bảng: DROP TABLE table_name
+- sửa bảng: ALTER TABLE table_name
+- chỉnh sửa mô tả của cột: ALTER TABLE table_name MODIFY column_name column_definition
+- xóa cột trong bảng: ALTER TABLE table_name DROP COLUMN column_name
+- đổi tên bảng : ALTER TABLE table_name RENAME TO new_table_name
+- đổi tên cột trong bảng: ALTER TABLE table_name CHANGE COLUMN old_name new_name column_defintion

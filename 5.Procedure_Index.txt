@@ -1,0 +1,112 @@
+SQL Views - Stored procedure
+
+1. SQL Using views:
+- views trong SQL là một thành phần của một bảng dưới dạng truy vấn SQL được xác định trước.
+- views cho phép tổng hợp kết quả từ nhiều bảng theo tiêu chí, tách những truy vấn dài dòng thành views.
+- bản chất của 1 views là một đoạn mã SQL được lưu vào sever CSDL
+- views được coi là một bảng ảo có chức năng tương tự như table thông thường nhưng không hề lưu trữ dữ liệu.
+2. Cú pháp:
+- tạo views:
+	CREATE VIEW view_name [col_list] AS select-statement
+- thay đổi views:
+	ALTER VIEW view_name [col_list] AS select-statement
+- đổi tên view:
+	RENAME TABLE view_name TO new_view_name
+- xóa view:
+	DROP VIEW [IF EXISTS] view_name
+- chèn hàng vào view:
+- xóa hàng khỏi view:
+	DELETE FROM view_name WHERE statement
+3. Lợi ích của views:
+- đơn giản hóa truy vấn phức tạp
+- tăng thêm lớp bảo mật: vì các bảng dữ liệu bảo mật không được truy vấn trực tiếp mà chỉ xem được qua views
+- sử dụng thay cho việc tách bảng
+4. Chỉ mục ( index ) trong MySQL:
+- KN: là bảng tra cứu đặc biệt mà DB Search Engine có thể sử dụng để tăng nhanh thời gian và hiệu suất thu thập dữ liệu
+	=> chỉ mục là một con trỏ tới dữ liệu trong một bảng, một chỉ mục trong DB giống như là một chỉ mục trong mục lục của cuốn sách
+- khi nào cần đánh chỉ mục:
+	bất cứ khi nào thay đổi cấu trúc bảng dữ liệu thì đều cần ADD index lại
+	nếu DB đang sử dụng INSERT hay UPDATE nhiều hơn là SELECT thì index làm chậm truy xuất hơn
+	=> lưu ý: index giống như các tab, chúng là cho nó nhanh hơn để có thể tìm thấy dữ liệu phù hợp với tiêu chí nhất định
+- Các loại index trong MySQL
+	B-Tree index: 
+		dữ liệu tổ chức dưới dạng cây
+		truy vấn tìm kiếm là quá trình đệ quy
+		dùng khi muốn tìm kiếm giá trị trong một khoảng
+		dùng một phần của nodes để tìm kiếm
+	Hash index:
+		dữ liệu tổ chức dưới dạng key-value được liên kết với nhau
+		chỉ nên sử dụng các biểu thức toán tử = <> ; không sử dụng toán tử tìm kiếm trong khoảng
+		không thể tối ưu hóa ORDER BY bằng việc sử dụng Hash index vì nó không thể tìm được phần tử tiếp theo trong Order
+		toàn bộ nội dung của Key được sử dụng để tìm kiếm giá trị recorrds
+		Hash index có tốc độ nhanh hơn B-Tree
+- Cách sử dụngL
+	tạo:	
+		CREATE UNIQUE INDEX index_name ADD PRIMARY KEY (col1, col2,..)
+		CREATE UNIQUE INDEX index_name ON table_name(col1, col2,..)
+	thêm index:
+		ALTER TABLE tab_name ADD PRIMARY KEY 
+		ALTER TABLE tab_name ADD UNIQUE index_name(col1, col2,..)
+		ALTER TABLE tab_name ADD FULLTEXT index_name(col1, col2,..)
+	xóa:
+		DROP INDEX index_name
+- sử dụng chỉ mục để cải thiện hiệu năng:
+	EXPLAIN SELECT * FROM table_name WHERE conditions
+5. Tạo MYSQL sotred procedues
+	DELIMITER //
+	CREATE PROCEDURE pr_name ([paramater1, paramter2,..])
+	BEGIN
+	sql_statements
+	END ;//
+	DELIMITER;
+- tạo với tham số:
+	DELIMITER // ( phân cách bộ nhớ lưu trữ thủ tục Cache và mở ra ô lưu trữ mới )
+	CRETAE PROCEDURE pr_name (IN para_name dataType, OUT para_name dataType) (khai báo SP mới)
+	BEGIN (khai báo bắt đầu SP)
+	statements
+	END; (khai báo kết thúc SP)
+	DELIMITER; (đóng ô lưu trữ)
+	
+	tạo bảng truy vấn -> chèn bản ghi ( insert into ) -> tạo thủ tục lưu trữ
+- gọi procedure:
+	CALL procedure_name();
+- sửa procedure:
+	++++++++++++ phân quyền cho procedure
+	DELIMITER $$
+	DROP PROCEDURE IF EXISTS `procedureName`$$
+	CREATE DEFINER=`root`@`localhost` PROCEDURE procedureName()
+	BEGIN
+   	SELECT *  FROM products;
+	END; $$
+	DELIMITER
+
+		DEFINER=`root`@`localhost` là tên người tạo procedure
+- biến trong MYSQL Stored procedure
+	khai báo: DECLARE variable_name datatype(size) DEFAULT default_value
+	DECLARE: là từ khóa tạo biến variable_name là tên biến
+	dataType(size) là kiểu dự liệu và kích thước của biến
+	default_value: gán giá trị mặc định cho biến
+- gán giá trị cho biến:
+	SET var_name = 'value';
+	
+	gán qua lệnh SELECT:
+	DECLARE total INT DEFAULT 0
+	SELECT COUNT(*) INTO total FROM Product
+		nếu biến được định nghĩa giữa BEGIN và END thì đó là biến cục bộ của một Procedure
+- truyền tham số vào MySQL stored procedure
+	IN: tham số mặc định
+	OUT: 
+
+6. MYSQL: stored procedure
+- KN: stored procedure được định nghĩa như một tập hợp các khai báo sql được lưu trữ ngay trong DB và được gọi bởi một program, trigger hay một stored procedure khác
+- stored procedure cho phép truyền tham số
+- ưu điểm:	
+	tăng khả năng thực thi của ứng dụng (program)
+	được lưu trữ trong DB -> chạy nhanh hơn là một lệnh sql chưa compile
+	giảm lưu lượng thông tin giao tiếp giữa ứng dụng và DB server <- gửi tên stored procedure và lấy về kết quả có sẵn
+- nhược điểm:
+	nếu tạo nhiều SP thì sẽ tốn bộ nhớ 
+	nếu thực hiện quá nhiều xử lý trong mỗi thủ tục lưu trữ thì CPU làm việc nặng hơn
+	SP chỉ chứa đựng các khai báo SQL nên khó để viết 1 procedure nhằm thực hiện các thao tác phức tạp
+	
+	

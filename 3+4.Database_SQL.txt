@@ -1,0 +1,81 @@
+1. Câu lệnh where:
+2. Toán tử AND:
+	nối 2 biểu thức điều kiện
+	trả về true nếu cả hai đúng
+	trả về false nếu một trong hai sai
+3. Toán tử OR:
+	quy định trả về biểu thức điều kiện
+	trả về true nếu 1 trong 2 true
+	trả về false nếu cả 2 btdk false
+4. Toán tử NOT:
+	phủ định giá trị của BTDK
+	trả về false nếu true và ngược lại
+5. Câu lệnh ORDER BY:
+	sắp xếp trật tự kết quả truy vấn theo giá trị của các cột
+	mặc định là tăng dần, nếu đặt là DESC là giảm dần
+	cú pháp:
+		SELECT column-list
+		FROM table_name
+		[WHERE condition]
+		[ORDER BY column1, column2, .. columnN] [ASC | DESC];
+6. Câu lệnh GROUP BY:
+	sử dụng hợp tác với câu lệnh SELECT để sắp xếp dữ liệu giống nhau thành nhóm tập hợp các kết quả theo giá trị của một hoặc nhiều cột
+	các hàm thường sử dụng COUNT , MIN , MAX,  SUM, AVG
+	cú pháp:
+		SELECT column1, column2
+		FROM table_name
+		WHERE [ conditions ]
+		GROUP BY column1, column2
+		ORDER BY column1, column2
+7. Câu lệnh HAVING:
+	sử dụng để quy định các điều kiện trong trường hợp sử dụng các hàm SQL ( không sử dụng WHERE ) 
+	đứng sau GROUP BY và trước ORDER BY
+8. Câu lệnh JOIN:
+	truy vấn dữ liệu kết hợp từ nhiều bảng có liên quan tới nhau qua khóa ngoại và khóa chính
+	các loại câu lệnh JOIN:
+		INNER JOIN ( JOIN ): chỉ trả về các record có mặt ở cả hai bảng ( điểm chung )
+		LEFT JOIN: trả về tất cả các record có mặt ở bảng bên trái và những record tương ứng ở bảng bên trái
+		RIGHT JOIN: ngược lại LEFT JOIN
+		FULL JOIN: trả về tất cả record ở hai bảng
+9. Câu lệnh INSERT INTO:
+	dùng để thêm các hàng dữ liệu mới vào trong DB
+	cú pháp:
+		INSERT INTO table_name (col1, col2, col3,..) VALUES (value1, value2, value3,..)
+		INSERT INTO table_name VALUES (value1, value2, value3,..)
+10. Câu lệnh SELECT: 
+	lấy dữ liệu từ một bảng trong DB trả về dữ liệu dưới dạng bảng kết quả, gọi là bảng tập kết quả ( result-sets )
+	cú pháp:
+		SELECT col1, col2,... FROM table_name
+11. Mệnh đề WHERE:
+	sử dụng để đưa ra biểu thức điều kiện khi lấy dữ liệu từ một bảng hoặc bằng cách JOIN với nhiều bảng
+	trả về kết quả là các giá trị cụ thể từ bảng tương ứng với điều kiện 
+	cú pháp:
+		SELECT col1, col2,... FROM table_name
+		WHERE 	condition
+12. Tăng tốc độ truy vấn:
+- nguyên nhân truy vấn chậm:
+	thiết kế bảng CSDL chưa hợp lí: chứa quá nhiều thuộc tính logic phức tạp - thiết kế chứa nhiều cặp dữ liệu lặp dẫn đến dư thừa và khó kiểm soát
+	thiếu hoặc không dùng indexes trong bảng CSDL - đánh chỉ mục giúp truy vấn nhanh hơn
+	các câu truy vấn Transact-SQL chuyển số lượng dữ liệu lớn từ server đến client
+	truy vấn nhiều, dữ liệu trả về dư thừa
+	các câu truy vấn quá nghèo nàn
+- cách khắc phục:
+	giảm thiểu sự kết nối tới CSDL
+	chỉ SELECT * truy xuất dữ liệu cần
+	sử dụng indexes và cố gắng truy vấn dữ liệu thông qua các điều kiện lặp trên các chỉ mục
+	sử dụng EXPLAIN để phân tích truy vấn
+	đếm số lượng dữ liệu trả về
+	chấp nhận dư thừa dữ liệu
+	dùng nhiều INSERT nếu có thể
+	chỉ dùng DISTINCT khi cần
+	chỉ dùng UNION khi cần
+	sử dụng loại * type trường * field chính xác cho dữ liệu
+	giải phóng bộ nhớ ngay sau khi sử dụng xong
+	áp dụng thói quen tốt để code nhanh hơn
+13. Các hàm trong SQL:
+	SQL cung cấp sẵn một số hàm để thao tác với dữ liệu chuỗi, số, ngày tháng,..
+	VD: hàm thao tác với số SUM, AVG, ROUND, ABS,..
+	    hàm thao tác với chuỗi UCASE, LCASE, LEN, CONCAT,..
+	    hàm thao tác với thời gian DATE, TIME, NOW,..
+	    và các hàm khác COUNT, MIN, MAX,..
+14.b

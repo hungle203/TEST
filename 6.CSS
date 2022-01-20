@@ -1,0 +1,121 @@
+CSS - Cascading style stylesheet
+
+1. CSS - là gì 
+- cascading style stylesheet - mô tả cách các phần tử HTML sẽ hiển thị trên màn hình, trang web hoặc các phương tiện khác
+- css giúp tiết kiệm công sức
+- css có thể kiểm soát bố cục của nhiều trang web cùng một lúc 
+- các bảng định kiểu bên ngoài được lưu trữ trong tệp CSS
+- css được sử dụng để xác định kiểu cho các trang web bao gồm thiết kế, bố cục và các biến thể hiển thị cho các thiết bị và kích thước màn hình khác nhau
+
+- CSS là bạn đồng hành không thể thiếu của HTML
+ bản thân các thẻ HTML không có các thuộc tính để thay đổi diện mạo của nó
+ CSS ra đời để điều khiển được diện mạo của thẻ HTML một cách dễ dàng
+
+2. CSS syntax - cú pháp của CSS:
+- một bộ quy tắc (rule) CSS bao gồm một bộ chọn * selector và một khối khai báo thuộc tính
+	bộ chọn chỉ tới các phần tử HTML mà ta muốn áp dụng kiểu
+	khai báo thuộc tính gồm một tên thuộc tính ( property) và giá trị (value) của thuộc tính phân tách bằng dấu :
+	mỗi khai báo được kết thúc bởi một dấu ; và nhóm khai báo đặt trong một cặp ngoặc {}
+- chú thích trong CSS: 
+	comment trong CSS được dùng để giải thích ý nghĩa của mã nguồn, giúp người khác hiểu được mã nguồn đã viết
+	hoặc giúp chính mình hiểu mã nguồn
+	các trình duyệt sẽ không xử lý các phần chú thích
+
+3. Nhúng CSS vào trong tài liệu HTML:
+- 3 cách nhúng: 
+	khai báo trực tiếp trong thẻ HTML ( inline ) => đơn giản dễ thực hiện nhưng lại phải khai báo cho tất cả các thẻ HTML
+	khai báo trong thẻ <style> của tài liệu HTML ( internal line ) => dễ dàng quản lý hơn cách inline
+	khai báo trong file .css riêng biệt ( external ) => link của file .css được đặt trong thẻ head của HTML
+- nhiều khai báo style sheet trùng nhau: khai báo cuối cùng sẽ được sử dụng
+- đè kiểu: inline - external và internal style - kiểu mặc định
+	độ ưu tiên: inline > external và internal > kiểu mặc định
+
+4. Các bộ chọn selector khác nhau trong CSS:
+	Các bộ chọn cho phép chọn và thao tác với phần tử HTML mà mình mong muốn
+	bộ chọn dùng để tìm hoặc chọn phần tử dựa trên id, class, loại thẻ, các thuộc tính và nhiều thứ khác trong HTML
+- bộ chộn phần tử: element selector dựa vào tên  của các phần tử thẻ HTML
+- bộ chọn id: sử dụng thuộc tính id của một phần tử HTML để chỉ định cụ thể một phần tử HTML
+	một id nên là duy nhất trong một trang, do đó bộ chọn id được dùng khi muốn áp dụng kiểu cho phần tử chứa id đó
+		để chọn phần tử với id cụ thể thì viết kí hiệu # trước id ( giá trị thuộc tính ) của phần tử đó
+- bộ chọn class: chọn các phần tử có thuộc tính class với một giá trị cụ thể
+		để chọn phần tử class cụ thể thì viết kí hiệu . trước tên class
+- gộp các bộ chọn khi nhiều phần tử được định nghĩa kiểu giống nhau
+	giúp giảm bớt mã nguồn và dễ điều chỉnh hơn, sử dụng dấu , để ngăn cách các bộ chọn
+
+5. Danh sách trong CSS:
+- các thuộc tính danh sách cho phép: 
+	thiết lập các đánh dấu phần tử danh sách khác nhau cho danh sách có thứ tự
+	thiết lập các đánh dấu phần tử danh sách khác nhau cho các danh sách không có thứ tự
+	thiết lập một hình ảnh đánh dấu phần tử danh sách
+- Các danh sách HTML
+	danh sách không có thứ tự <ul> ( unorder-list ) các phần tử trong danh sách được đánh dấu bằng các bullet giống dấu chấm
+	danh sách có thứ tự <ol> (order-list) các phần tử được đánh dấu bằng số hoặc chữ cái
+- đánh dấu mục của danh sách bằng hình ảnh: thuộc tính list-style-image chỉ định một hình ảnh để đánh dấu các mục trong danh sách
+- vị trí đánh dấu các mục trong danh sách: thuộc tính list-style-position xác định nơi sẽ đánh dấu các mục của danh sách
+- danh sách - thuộc tính rút gọn: thuộc tính list-style là một thuộc tính rút gọn để đặt tất cả các thuộc tính của danh sách
+- kiểu của danh sách với màu sắc
+
+6. Bảng trong CSS:
+- đường viền của bảng: sử dụng thuộc tính border
+	bỏ đường viền của bảng: sử dụng thuộc tính border-collapse
+- chiều rộng chiều cao của bảng: width và height
+- căn chỉnh theo chiều ngang: text-align thiết lập căn chỉnh theo chiều ngang trái phải giữa
+- căn chỉnh theo chiều dọc: vertical-lign dùng để thiết lập theo chiều dọc tren dưới
+- padding trong bảng: sử dụng cho thẻ <td> <th> điều khiển khoảng cách giữa đường viền và nội dụng trong bảng
+
+7. Định dạng văn bản bằng CSS:
+- màu sắc văn bản: thuộc tính color được chỉ định bởi
+	một giá trị HEX
+	một giá trị RGB
+	một tên màu sắc trong tiếng anh
+- căn chỉnh văn bản: 
+	thuộc tính text-align dùng để căn chỉnh theo chiều ngang 
+	thuộc tính text-align với giá trị là jusstify sẽ làm cho văn bản được dàn đều trong khung chứa văn bản
+- trang trí văn bản: 
+	text-decoration được sử dụng để thiết lập hoặc loại bỏ trang trí khỏi văn bản
+- chuyển đổi văn bản: 
+	text-transform được sử dụng để chỉ định ký tự chữ hoa và thường cho một văn bản
+- thụt lề văn bản: 	text-ident
+- khoảng cách giữa các ký tự: 	letter-spacing
+- chiều cao dòng: 	line-height 
+- hướng của văn bản: 	direction
+- khoảng cách giữa các từ: 	word-spacing
+
+8. Phông chữ trong CSS:
+	trong CSS có hai loại phông chữ ( font family )
+		generic family - nhóm các phông chữ trông tương tự nhau như serif hoặc monospace
+		font family - phông chữ cụ thể như Time new roman hoặc Arial
+- Font family:
+	phông chữ của văn bản được xđ bởi thuộc tính font-family
+- loại font: thuộc tính font-style chủ yếu được sử dụng để chỉ định in nghiêng văn bản
+	normal - hiển thị bình thường
+	italic - hiển thị in nghiêng
+	oblique - in ngiêng xiên
+- kích cỡ phông chữ:  font-size có thể tương đối hoặc tuyệt đối hoặc đặt theo Pixel hoặc theo EM
+- độ đậm phông chữ: font-weight
+- font variant: định kiểu văn bản được hiển thị với một phông chữ small-caps ( chữ hoa có kích thước bằng chữ thường )
+
+9. Đường viền trong CSS:
+	định kiểu style, chiều rộng và màu sắc cho đường viền của phần tử 
+	phần tử này có viền kiểu là đường rãnh - groove rộng 15px và màu xanh lá cây
+- Kiểu đường viền:	border-style
+	dotted - đường viền là các điểm (dấu chấm)
+	dashed - đường viền là các nét đứt
+	solid - đường viền là nét liền mảnh
+	double - đường viền là nét đôi
+	groove - đường viền 3D có xẻ rãnh. Hiệu ứng phụ thuộc vào màu viền
+	ridge - đường viền 3D tròn nổi. Hiệu ứng phụ thuộc vào màu viền
+	inset - đường viền 3D khung chìm. Hiệu ứng phụ thuộc vào màu viền
+	outset - đường viền 3D khung nổi. Hiệu ứng phụ thuộc vào màu viền
+	none - không có đường viền
+	hidden - đường viền ẩn
+- chiều rộng đường viền: 	border-width
+- màu sắc đường viền: border-color
+- đường viền - các cạnh cụ thể: border-top/bot/left/right-style
+
+10. Điều chỉnh màu và ảnh nền:
+- background-color
+- background-image
+- background-repeat
+- background-attachment
+- background-position

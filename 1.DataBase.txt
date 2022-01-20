@@ -1,0 +1,46 @@
+1. Cơ sở dữ liệu: 
+- KN: cơ sở dữ liệu Database là nhóm dữ liệu có tổ chức, được lưu trữ - quản lí - truy vấn dữ liệu dựa trên các hệ thống số.
+- Các mô hình dữ liệu: cài đặt phù hợp nhằm dễ dàng thu nhập và xử lí dữ liệu
++ phân cấp ( hierachical )
++ đồ thị ( graph )
++ quan hệ 
++ đối tượng
++ tài liệu
+2. Cơ sở dữ liệu quan hệ: 
+- KN: là DB được xây dựng trên mô hình dữ liệu quan hệ * relation
+- được tổ chức bằng bảng - quan hệ ; bao gồm dòng và cột 
+- dòng là các bản ghi * record - hàng * tuple
+- cột là các thuộc tính * attribute - trường * field
+- một bảng thường lưu trữ dữ liệu của một loại thực thể * entity * nhất định ( Object )
+3. Hệ quản trị DataBase: 
+- Database Management System * hệ quản trị cơ sở dữ liệu là một ứng dụng được sử dụng để quản lí CSDL
+- Các chức năng của DbMs: 
++ định nghĩa dữ liệu * definition
++ cập nhật dữ liệu * update 
++ truy vấn dữ liệu * retrieval
++ quản lý dữ liệu * administration * : bảo mật theo dõi sao lưu
+4. SQL : Structured Query Language - ngôn ngữ truy vấn có cấu trúc
+- được sử dụng để thao tác với các Db quan hệ * relation database
+- một số từ khóa quan trọng: SELECT - UPDATE - DELETE - INSERT - CREAT - ALTER - DROP
+- nên đặt dấu ; ở cuối mỗi câu lệnh
+- từ khóa không phân biệt hoa thường
+5. MySQL: là một hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở
+- MySQL sever: máy chủ dịch vụ quản trị Db
+- MySQL client: ứng dụng cho phép kết nối và tương tác với MySQL
+- MySQL workbrench: là chương trình giúp cho người lập trình có thể giao tiếp với hệ cơ sở dữ liệu MySQL thay vì phải sử dụng các lệnh Command-line phức tạp
+- MySQL workbrench: được thiết kế đơn giản, dễ sử dụng và có thể thích ứng với nhiều Hđh
+6. Các khái niệm cơ bản:
+- bảng: table - là đối tượng được sử dụng để lưu trữ dữ liệu trong Db - gồm hàng và cột
+- hàng: row - được gọi là bản ghi * record
+- cột: column - được gọi là trường * field
+=> mỗi bản ghi gồm nhiều trường thuộc tính với kiểu dữ liệu khác nhau
+- khóa chính * primary key : là trường dữ liệu * cột - có giá trị duy nhất giữa các hàng 
+ khóa chính để xác định chính xác Record nào đó có trong bảng
+- khóa ngoại * foreign key: là trường * cột dữ liệu chứa các giá trị tham chiếu một khóa chính của bảng khác
+việc tạo các cột là khóa ngoại sẽ hình thành nên mối quan hệ giữa các bảng
+===============
+Dữ liệu là mô tả về đối tượng được biểu dễ dưới dạng các tài liệu
+Cơ sở dữ liệu là nhóm dữ liệu có tổ chức
+CSDL quan hệ * Relation DataBase được xây dựng dựa trên mô hình dữ liệu quan hệ
+MySQL là một hệ quản trị CSDL quan hệ * RDB mã nguồn mở
+=============== 
